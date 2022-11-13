@@ -13,5 +13,6 @@ struct tree_node *Remove(int x, struct tree_node *t);
 int Contains(int x, struct tree_node *t);
 struct tree_node *Initialize(struct tree_node *t);
 int Full(struct tree_node *t);
+struct tree_node *createTree(int value); /* Added new function */
 
 #endif // BTREE_H

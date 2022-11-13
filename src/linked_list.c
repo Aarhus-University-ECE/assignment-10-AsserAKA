@@ -24,14 +24,27 @@ void free_list(node *p) {
 
 /* print list to console */
 void print_list(node *p) {
-  // Add your code for exercise 1
-  // There is NO testcode for this
+  
+  printf("%d",p->value); /* Print the current value of the linked list */
+
+  /* Recursion: Uses the print_list function as long as the next element isn't NULL */
+  if (p->next != NULL)
+  {
+    return print_list(p->next);
+  } 
 }
 
 int sum_squares(node *p) {
-  // Add your code for excercise 2
-  // You can find the tests in tests.cpp
-  return -1;
+
+  if (p != NULL)
+  {
+    /* Recursive step: calculating square of current element and adding it with the sum_square of the next element. Stops when the current element is NULL */
+    return p->value * p->value + sum_squares(p->next); 
+  }
+  else
+  {
+    return 0; /* Base case: If the current element is NULL, return 0 */
+  }
 }
 
 typedef int (*fn_int_to_int)(int);
@@ -39,7 +52,18 @@ typedef int (*fn_int_to_int)(int);
 node *map(node *p, fn_int_to_int f) { 
   // Add your code for excercise 3
   
-  return NULL; 
+
+  if (p != NULL)
+  {
+    /* Recursive step: Mapping the node's value to the sqaure of p->value. Its next points to the map of the next node */
+    return make_node(f(p->value), map(p->next, f));
+  } 
+  else
+  {
+    /* Base case: When the current node is NULL, we return NULL to end the list. */
+    return NULL;
+  }
+   
 }
 
 int square(int x) { return x * x; }
