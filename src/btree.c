@@ -48,8 +48,8 @@ struct tree_node *Remove(int x, struct tree_node *t) {
           temp = temp->left;
         }
        
-        t->item = temp->item; /* Assiging the found leaf's item to the root, thereby removing x */
-        free(temp);  /* Freeing temp, as it has moved place */
+        t->item = temp->item; /* Assiging the found node's item to the root, thereby removing x */
+        Remove(t->item, t->right);  /* Use Remove to replace temp */
 
         return t;
       }
